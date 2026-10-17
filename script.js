@@ -3,19 +3,6 @@ const isiUndangan = document.getElementById("isi-undangan");
 const musik = document.getElementById("musik");
 const tombolMusik = document.getElementById("tombol-musik");
 
-tombolBuka.addEventListener("click", function () {
-    isiUndangan.hidden = false;
-
-    isiUndangan.scrollIntoView({
-        behavior: "smooth"
-    });
-
-    
-const tombolBuka = document.getElementById("tombol-buka");
-const isiUndangan = document.getElementById("isi-undangan");
-const musik = document.getElementById("musik");
-const tombolMusik = document.getElementById("tombol-musik");
-
 // Membuka undangan dan memutar musik
 tombolBuka.addEventListener("click", async function () {
     isiUndangan.hidden = false;
@@ -58,7 +45,6 @@ musik.addEventListener("play", function () {
     tombolMusik.textContent = "♫ Jeda Lagu";
 });
 
-});
 // Formulir ucapan
 const formUcapan = document.getElementById("form-ucapan");
 
