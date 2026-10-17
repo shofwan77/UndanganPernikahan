@@ -1078,3 +1078,47 @@ a[href*="google.com/maps"]:hover {
 #bagian-qris[hidden] {
     display: none !important;
 }
+
+.tautan-ucapan {
+  text-align: center;
+  margin: 24px 0;
+}
+
+.tombol-ucapan {
+  display: inline-block;
+  padding: 14px 28px;
+  background: #d4af37;
+  color: #064e3b;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.tombol-ucapan:hover {
+  background: #f0d779;
+  transform: translateY(-2px);
+}
+
+#bagian-qris {
+  margin: 30px auto;
+  padding: 24px;
+  text-align: center;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid #d4af37;
+  border-radius: 16px;
+}
+
+#bagian-qris h3 {
+  color: #d4af37;
+  margin-bottom: 10px;
+}
+
+.gambar-qris {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  margin: 20px auto 0;
+  border-radius: 10px;
+}

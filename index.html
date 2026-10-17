@@ -116,42 +116,33 @@
             <h2>Kirim Ucapan</h2>
             <p>Berikan doa terbaik untuk kedua mempelai.</p>
 
-            <form id="form-ucapan">
-                <label for="nama">Nama</label>
-                <input id="nama" type="text" value="" required>
-
-                <label>Konfirmasi Kehadiran</label>
-
-<!-- QRIS, disembunyikan secara default -->
-<div id="bagian-qris" hidden>
-    <p class="label">TANDA KASIH</p>
-    <h3>Kirim Hadiah Digital</h3>
-    <p>Jika berkenan, Anda dapat memberikan tanda kasih melalui QRIS.</p>
-
-    <img
-        src="assets/qris.jpeg"
-        alt="Kode QRIS untuk hadiah pernikahan"
-        class="gambar-qris"
-    />
+           
+<div class="tautan-ucapan">
+  <p>Silakan kirim ucapan dan doa terbaik untuk kedua mempelai.</p>
+  <a
+    class="tombol-ucapan"
+    href="https://forms.gle/RPRcbFsQ8x5bZWr1A"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Kirim Ucapan
+  </a>
 </div>
 
-                <div class="pilihan">
-                    <label>
-                        <input type="radio" name="kehadiran" value="Hadir" required>
-                        Hadir
-                    </label>
 
-                    <label>
-                        <input type="radio" name="kehadiran" value="Berhalangan">
-                        Berhalangan
-                    </label>
-                </div>
+<div id="bagian-qris">
+  <p class="label">TANDA KASIH</p>
+  <h3>Kirim Hadiah Digital</h3>
+  <p>Jika berkenan, Anda dapat memberikan tanda kasih melalui QRIS.</p>
 
-                <label for="ucapan">Ucapan dan Doa</label>
-                <textarea id="ucapan" rows="4" placeholder="Tuliskan ucapan dan doa..." required></textarea>
+  <img
+    src="assets/qris.png"
+    alt="Kode QRIS untuk hadiah pernikahan"
+    class="gambar-qris"
+  />
+</div>
 
-                <button type="submit">Kirim Ucapan</button>
-            </form>
+                
 
 
         </section>
