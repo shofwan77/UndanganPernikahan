@@ -10,28 +10,54 @@ tombolBuka.addEventListener("click", function () {
         behavior: "smooth"
     });
 
-    musik.play()
-        .then(function () {
-            tombolMusik.textContent = "♫ Jeda Lagu";
-        })
-        .catch(function () {
-            tombolMusik.textContent = "♫ Putar Lagu";
-        });
+    
+const tombolBuka = document.getElementById("tombol-buka");
+const isiUndangan = document.getElementById("isi-undangan");
+const musik = document.getElementById("musik");
+const tombolMusik = document.getElementById("tombol-musik");
+
+// Membuka undangan dan memutar musik
+tombolBuka.addEventListener("click", async function () {
+    isiUndangan.hidden = false;
+
+    isiUndangan.scrollIntoView({
+        behavior: "smooth"
+    });
+
+    try {
+        await musik.play();
+        tombolMusik.textContent = "♫ Jeda Lagu";
+    } catch (error) {
+        tombolMusik.textContent = "♫ Putar Lagu";
+        console.error("Musik gagal diputar:", error);
+    }
 });
 
-tombolMusik.addEventListener("click", function () {
+// Tombol putar dan jeda
+tombolMusik.addEventListener("click", async function () {
     if (musik.paused) {
-        musik.play()
-            .then(function () {
-                tombolMusik.textContent = "♫ Jeda Lagu";
-            })
-            .catch(function () {
-                tombolMusik.textContent = "♫ Musik tidak tersedia";
-            });
+        try {
+            await musik.play();
+            tombolMusik.textContent = "♫ Jeda Lagu";
+        } catch (error) {
+            tombolMusik.textContent = "♫ Musik tidak tersedia";
+            console.error("Musik gagal diputar:", error);
+        }
     } else {
         musik.pause();
         tombolMusik.textContent = "♫ Putar Lagu";
     }
+});
+
+// Memperbarui tulisan tombol ketika lagu selesai atau dijeda
+musik.addEventListener("pause", function () {
+    tombolMusik.textContent = "♫ Putar Lagu";
+});
+
+musik.addEventListener("play", function () {
+    tombolMusik.textContent = "♫ Jeda Lagu";
+});
+
 });
 // Formulir ucapan
 const formUcapan = document.getElementById("form-ucapan");
