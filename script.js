@@ -1,82 +1,104 @@
+
 const tombolBuka = document.getElementById("tombol-buka");
 const isiUndangan = document.getElementById("isi-undangan");
 const musik = document.getElementById("musik");
 const tombolMusik = document.getElementById("tombol-musik");
+const formUcapan = document.getElementById("form-ucapan");
 
-tombolBuka.addEventListener("click", function () {
+// Buka undangan dan coba putar musik
+tombolBuka.addEventListener("click", async function () {
     isiUndangan.hidden = false;
+    isiUndangan.scrollIntoView({ behavior: "smooth" });
 
-    isiUndangan.scrollIntoView({
-        behavior: "smooth"
-    });
-
-    musik.play()
-        .then(function () {
-            tombolMusik.textContent = "♫ Jeda Lagu";
-        })
-        .catch(function () {
-            tombolMusik.textContent = "♫ Putar Lagu";
-        });
+    try {
+        await musik.play();
+        tombolMusik.textContent = "♫ Jeda Lagu";
+    } catch (error) {
+        console.error("Musik tidak dapat diputar:", error);
+        tombolMusik.textContent = "♫ Putar Lagu";
+    }
 });
 
-tombolMusik.addEventListener("click", function () {
+// Tombol putar/jeda musik
+tombolMusik.addEventListener("click", async function () {
     if (musik.paused) {
-        musik.play()
-            .then(function () {
-                tombolMusik.textContent = "♫ Jeda Lagu";
-            })
-            .catch(function () {
-                tombolMusik.textContent = "♫ Musik tidak tersedia";
-            });
+        try {
+            await musik.play();
+            tombolMusik.textContent = "♫ Jeda Lagu";
+        } catch (error) {
+            console.error("Musik gagal diputar:", error);
+            alert("Lagu belum bisa diputar. Periksa file musik kamu.");
+        }
     } else {
         musik.pause();
         tombolMusik.textContent = "♫ Putar Lagu";
     }
 });
-// Formulir ucapan
 
-const formUcapan = document.getElementById("form-ucapan");
-
+// Kirim ucapan ke server
 formUcapan.addEventListener("submit", async function (event) {
     event.preventDefault();
 
     const nama = document.getElementById("nama").value.trim();
-    const pilihan = formUcapan.querySelector(
+    const pilihanKehadiran = document.querySelector(
         'input[name="kehadiran"]:checked'
     );
     const ucapan = document.getElementById("ucapan").value.trim();
 
-    if (!nama || !pilihan || !ucapan) {
-        alert("Lengkapi formulir terlebih dahulu.");
+    if (!nama || !pilihanKehadiran || !ucapan) {
+        alert("Mohon lengkapi semua kolom.");
         return;
     }
 
+    const tombolKirim = formUcapan.querySelector(
+        'button[type="submit"]'
+    );
+
+    tombolKirim.disabled = true;
+    tombolKirim.textContent = "Mengirim...";
+
     try {
-        const respons = await fetch("/api/ucapan", {
+        const response = await fetch("/api/ucapan", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 nama: nama,
-                kehadiran: pilihan.value,
-                pesan: ucapan
+                kehadiran: pilihanKehadiran.value,
+                ucapan: ucapan
             })
         });
 
-        const hasil = await respons.json();
+        const hasil = await response.json();
 
-        if (!respons.ok) {
-            throw new Error(hasil.pesan || "Gagal menyimpan ucapan.");
+        if (!response.ok || !hasil.success) {
+            throw new Error(hasil.message || "Pengiriman gagal.");
         }
 
-        alert("Terima kasih!.");
+        alert(hasil.message);
         formUcapan.reset();
-
     } catch (error) {
-        alert("Ucapan yang anda kirim gagal.");
-        console.error(error);
+        console.error("Gagal mengirim ucapan:", error);
+
+        alert(
+            "Ucapan gagal dikirim ke server. " +
+            "Pastikan server Node.js sedang berjalan."
+        );
+    } finally {
+        tombolKirim.disabled = false;
+        tombolKirim.textContent = "Kirim Ucapan";
     }
 });
 
+const pilihanKehadiran = document.querySelectorAll(
+    'input[name="kehadiran"]'
+);
 
+const bagianQris = document.getElementById("bagian-qris");
+
+pilihanKehadiran.forEach((pilihan) => {
+    pilihan.addEventListener("change", function () {
+        bagianQris.hidden = this.value !== "Berhalangan";
+    });
+});

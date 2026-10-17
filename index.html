@@ -14,20 +14,30 @@
         <source src="assets/lagu.mp3" type="audio/mpeg">
     </audio>
 
-    <header class="hero">
-        <p class="label">THE WEDDING OF</p>
-        <h1>Naufal <span>&</span> Putri</h1>
-        <p>Minggu, 20 Desember 2026</p>
-        <p class="deskripsi">
-            Dengan penuh kebahagiaan, kami mengundang
-            Anda untuk hadir di hari istimewa kami.
-        </p>
-        </p class="ayat pembuka"> "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, 
-               agar kamu cenderung dan merasa tenteram (sakinah) kepadanya, dan Dia menjadikan di antaramu rasa kasih (mawaddah) 
-               dan sayang (rahmah)..."
-        </p> 
-        <button id="tombol-buka">Buka Undangan</button>
-    </header>
+   
+<header class="hero">
+    <p class="label">THE WEDDING OF</p>
+
+    <h1>Naufal <span>&amp;</span> Putri</h1>
+
+    <p>Minggu, 20 Desember 2026</p>
+
+    <p class="deskripsi">
+        Dengan penuh kebahagiaan, kami mengundang
+        Anda untuk hadir di hari istimewa kami.
+    </p>
+
+    <p class="ayat pembuka">
+        "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia
+        menciptakan pasangan-pasangan untukmu dari jenismu sendiri,
+        agar kamu cenderung dan merasa tenteram (sakinah) kepadanya,
+        dan Dia menjadikan di antaramu rasa kasih (mawaddah)
+        dan sayang (rahmah)..."
+    </p>
+
+    <button id="tombol-buka">Buka Undangan</button>
+</header>
+
 
     <button id="tombol-musik" class="tombol-musik">
         ♫ Putar Lagu
@@ -111,6 +121,20 @@
                 <input id="nama" type="text" value="" required>
 
                 <label>Konfirmasi Kehadiran</label>
+
+<!-- QRIS, disembunyikan secara default -->
+<div id="bagian-qris" hidden>
+    <p class="label">TANDA KASIH</p>
+    <h3>Kirim Hadiah Digital</h3>
+    <p>Jika berkenan, Anda dapat memberikan tanda kasih melalui QRIS.</p>
+
+    <img
+        src="assets/qris.jpeg"
+        alt="Kode QRIS untuk hadiah pernikahan"
+        class="gambar-qris"
+    />
+</div>
+
                 <div class="pilihan">
                     <label>
                         <input type="radio" name="kehadiran" value="Hadir" required>
