@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <audio id="musik" loop>
+        <source src="assets/lagu.mp3" type="audio/mpeg">
+    </audio>
+
+    <header class="hero">
+        <p class="label">THE WEDDING OF</p>
+        <h1>Naufal <span>&</span> Putri</h1>
+        <p>Minggu, 20 Desember 2026</p>
+        <p class="deskripsi">
+            Dengan penuh kebahagiaan, kami mengundang
+            Anda untuk hadir di hari istimewa kami.
+        </p>
+        </p class="ayat pembuka"> "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, 
+               agar kamu cenderung dan merasa tenteram (sakinah) kepadanya, dan Dia menjadikan di antaramu rasa kasih (mawaddah) 
+               dan sayang (rahmah)..."
+        </p> 
+        <button id="tombol-buka">Buka Undangan</button>
+    </header>
+
+    <button id="tombol-musik" class="tombol-musik">
+        ♫ Putar Lagu
+    </button>
+
+    <main id="isi-undangan" hidden>
+
+        <section class="bagian">
+            <p class="label">ASSALAMUALAIKUM WR. WB.</p>
+            <h2>Undangan Pernikahan</h2>
+            <p>Dengan memohon rahmat dan ridho Allah SWT,
+                kami mengundang Anda untuk hadir di hari bahagia kami.</p>
+        </section>
+
+        <section class="bagian">
+            <p class="label">KEDUA MEMPELAI</p>
+            <h2>Mempelai</h2>
+
+            <img class="foto-utama" src="assets/foto-pasangan.jpg" alt="Foto kedua mempelai">
+
+            <h3>Naufal</h3>
+            <p>Putra dari keluarga Bapak Sartono dan Ibu Sartini</p>
+
+            <p class="simbol">&</p>
+
+            <h3>Putri</h3>
+            <p>Putri dari keluarga Alm.Bapak Wanto dan Ibu Yanti </p>
+        </section>
+
+        <section class="bagian">
+            <p class="label">SAVE THE DATE</p>
+            <h2>Detail Acara</h2>
+
+            <div class="kartu">
+                <h3>Akad Nikah</h3>
+                <p>Minggu, 20 Desember 2026</p>
+                <p>Pukul 09.00 WIB</p>
+            </div>
+
+            <div class="kartu">
+                <h3>Resepsi</h3>
+                <p>Minggu, 20 Desember 2026</p>
+                <p>Pukul 11.00 WIB - selesai</p>
+            </div>
+
+           <div class="lokasi-acara">
+    <h2>Lokasi Acara</h2>
+
+    <p>UTC Hotel Semarang</p>
+    <p> Jl. Kelud Raya No. 2, Petompon, Kec. Gajahmungkur, Kota Semarang, Jawa Tengah 50237.</p>
+
+    <a href="https://maps.app.goo.gl/nb7v92duAZXgCnDW6"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="tombol-lokasi">
+        Lihat Lokasi
+    </a>
+</div>
+        </section>
+
+        
+
+        <section class="bagian">
+            <p class="label">OUR MOMENTS</p>
+            <h2>Galeri Foto</h2>
+
+            <div class="galeri">
+                <img src="assets/foto-1.jpg" alt="Foto kenangan 1">
+                <img src="assets/foto-2.jpg" alt="Foto kenangan 2">
+                <img src="assets/foto-3.jpg" alt="Foto kenangan 3">
+            </div>
+        </section>
+
+        <section class="bagian">
+            <p class="label">WEDDING WISHES</p>
+            <h2>Kirim Ucapan</h2>
+            <p>Berikan doa terbaik untuk kedua mempelai.</p>
+
+            <form id="form-ucapan">
+                <label for="nama">Nama</label>
+                <input id="nama" type="text" value="" required>
+
+                <label>Konfirmasi Kehadiran</label>
+                <div class="pilihan">
+                    <label>
+                        <input type="radio" name="kehadiran" value="Hadir" required>
+                        Hadir
+                    </label>
+
+                    <label>
+                        <input type="radio" name="kehadiran" value="Berhalangan">
+                        Berhalangan
+                    </label>
+                </div>
+
+                <label for="ucapan">Ucapan dan Doa</label>
+                <textarea id="ucapan" rows="4" placeholder="Tuliskan ucapan dan doa..." required></textarea>
+
+                <button type="submit">Kirim Ucapan</button>
+            </form>
+
+
+        </section>
+
+        <footer class="bagian">
+            <p>Terima kasih atas doa dan restu Anda.</p>
+            <h2>Naufal & Putri</h2>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
