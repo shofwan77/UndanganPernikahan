@@ -33,24 +33,7 @@ tombolMusik.addEventListener("click", function () {
         tombolMusik.textContent = "♫ Putar Lagu";
     }
 });
-
-// Hitung mundur acara
-const tanggalAcara = new Date("2026-12-20T09:00:00+07:00").getTime();
-const elemenCountdown = document.getElementById("hitung-mundur");
-
-function perbaruiCountdown() {
-    const sekarang = Date.now();
-    const selisih = tanggalAcara - sekarang;
-
-    
-}
-
-perbaruiCountdown();
-setInterval(perbaruiCountdown, 1000);
-
 // Formulir ucapan
-
-
 const formUcapan = document.getElementById("form-ucapan");
 
 formUcapan.addEventListener("submit", async function (event) {
