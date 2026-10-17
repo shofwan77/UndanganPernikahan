@@ -3,49 +3,38 @@ const isiUndangan = document.getElementById("isi-undangan");
 const musik = document.getElementById("musik");
 const tombolMusik = document.getElementById("tombol-musik");
 
-// Membuka undangan dan memutar musik
-tombolBuka.addEventListener("click", async function () {
+tombolBuka.addEventListener("click", function () {
     isiUndangan.hidden = false;
 
     isiUndangan.scrollIntoView({
         behavior: "smooth"
     });
 
-    try {
-        await musik.play();
-        tombolMusik.textContent = "♫ Jeda Lagu";
-    } catch (error) {
-        tombolMusik.textContent = "♫ Putar Lagu";
-        console.error("Musik gagal diputar:", error);
-    }
+    musik.play()
+        .then(function () {
+            tombolMusik.textContent = "♫ Jeda Lagu";
+        })
+        .catch(function () {
+            tombolMusik.textContent = "♫ Putar Lagu";
+        });
 });
 
-// Tombol putar dan jeda
-tombolMusik.addEventListener("click", async function () {
+tombolMusik.addEventListener("click", function () {
     if (musik.paused) {
-        try {
-            await musik.play();
-            tombolMusik.textContent = "♫ Jeda Lagu";
-        } catch (error) {
-            tombolMusik.textContent = "♫ Musik tidak tersedia";
-            console.error("Musik gagal diputar:", error);
-        }
+        musik.play()
+            .then(function () {
+                tombolMusik.textContent = "♫ Jeda Lagu";
+            })
+            .catch(function () {
+                tombolMusik.textContent = "♫ Musik tidak tersedia";
+            });
     } else {
         musik.pause();
         tombolMusik.textContent = "♫ Putar Lagu";
     }
 });
-
-// Memperbarui tulisan tombol ketika lagu selesai atau dijeda
-musik.addEventListener("pause", function () {
-    tombolMusik.textContent = "♫ Putar Lagu";
-});
-
-musik.addEventListener("play", function () {
-    tombolMusik.textContent = "♫ Jeda Lagu";
-});
-
 // Formulir ucapan
+
 const formUcapan = document.getElementById("form-ucapan");
 
 formUcapan.addEventListener("submit", async function (event) {
